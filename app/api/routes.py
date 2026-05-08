@@ -1,24 +1,37 @@
 from fastapi import APIRouter
 from fastapi import UploadFile
 from fastapi import File
+
 import shutil
 import os
 
+from app.services.predict import predict_audio
+
 router = APIRouter()
 
-REAL_FOLDER = "data/raw/real"
+UPLOAD_FOLDER = "data/uploads"
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
-@router.post("/upload")
-async def upload_audio(file: UploadFile = File(...)):
+@router.post("/predict")
+async def predict(file: UploadFile = File(...)):
 
-    file_path = os.path.join(REAL_FOLDER, file.filename)
+    file_path = os.path.join(
+        UPLOAD_FOLDER,
+        file.filename
+    )
 
     with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+
+        shutil.copyfileobj(
+            file.file,
+            buffer
+        )
+
+    result = predict_audio(file_path)
 
     return {
         "filename": file.filename,
-        "saved_to": file_path,
-        "message": "Audio uploaded successfully"
+        "prediction": result
     }

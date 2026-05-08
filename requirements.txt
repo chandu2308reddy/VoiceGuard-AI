@@ -9,3 +9,6 @@ pandas
 scikit-learn
 python-multipart
 soundfile
+joblib
+evidently
+matplotlib
