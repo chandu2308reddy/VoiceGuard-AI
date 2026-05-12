@@ -100,6 +100,20 @@ This provides:
 - simple web application frontend
 
 ---
+Docker Container Setup
+Build the Docker image:
+
+docker build -t voiceguard-ai .
+
+Run the container:
+
+docker run -p 8000:8000 voiceguard-ai
+
+Access the API:
+
+http://localhost:8000/docs
+
+---
 
 ## Run Locally
 
