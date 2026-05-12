@@ -86,6 +86,21 @@ Add your prediction response screenshot below:
 
 ---
 
+## Streamlit Frontend 🌐
+
+Run Streamlit UI:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+This provides:
+- audio upload interface
+- prediction display
+- simple web application frontend
+
+---
+
 ## Run Locally
 
 ```bash

@@ -12,3 +12,4 @@ soundfile
 joblib
 evidently
 matplotlib
+streamlit
